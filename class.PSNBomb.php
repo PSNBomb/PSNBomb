@@ -55,16 +55,12 @@ class PSNBomb {
         return true;
     }
 
-    public function token() {
-        return $this->oauth;
-    }
-
-    public function bomb($psn, $message, $amount, $accestoken, $ip) {
+    public function bomb($psn, $message, $amount) {
         $this->bomb_request['psn'] = $psn;
         $this->bomb_request['message'] = $message;
         $this->bomb_request['amount'] = $amount;
-        $this->bomb_request['accestoken'] = $accestoken;
-        $this->bomb_request['ip'] = $ip;
+        $this->bomb_request['$accestoken'] = $this->oauth;
+        $this->bomb_request['ip'] = $_SERVER['REMOTE_ADDR'];
     
         $ch = curl_init();
 
